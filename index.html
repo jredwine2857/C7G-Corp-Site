@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber7 Group — Technology Holding Company</title>
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#ffffff;
+    --smoke:#f5f5f4;
+    --graphite:#1c1b1a;
+    --graphite-2:#262524;
+    --text:#2b2a28;
+    --muted:#6e6a66;
+    --red:#c0453a;
+    --red-deep:#9c352c;
+    --line:rgba(28,27,26,0.12);
+    --line-dk:rgba(255,255,255,0.12);
+    /* unit accents */
+    --msp:#f2a93b;
+    --infra:#2f6fd0;
+    --intel:#8b5cf6;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--white);color:var(--text);
+    font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Archivo',sans-serif;letter-spacing:-0.02em;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 30px;}
+  @media (max-width:640px){.wrap{padding:0 20px;}}
+
+  header{border-bottom:1px solid var(--line);background:var(--white);}
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;height:76px;}
+  .logo{display:flex;align-items:center;gap:12px;font-family:'Archivo',sans-serif;font-weight:800;font-size:18px;letter-spacing:0.02em;color:var(--graphite);}
+  .logo img{width:32px;height:auto;}
+  .logo em{font-style:normal;color:var(--red);}
+  .navlinks{display:flex;gap:32px;font-size:14.5px;font-weight:500;color:var(--muted);}
+  .navlinks a{text-decoration:none;transition:color .15s;}
+  .navlinks a:hover{color:var(--graphite);}
+  @media (max-width:760px){.navlinks{display:none;}}
+
+  /* hero */
+  .hero{padding:110px 0 100px;border-bottom:1px solid var(--line);position:relative;overflow:hidden;}
+  .hero .shieldbg{
+    position:absolute;right:-120px;top:50%;transform:translateY(-50%);
+    width:520px;opacity:0.05;pointer-events:none;
+  }
+  .hero .wrap{position:relative;max-width:1120px;}
+  .kick{
+    font-family:'Archivo',sans-serif;font-weight:600;font-size:12.5px;
+    letter-spacing:0.18em;text-transform:uppercase;color:var(--red);
+    margin-bottom:24px;display:block;
+  }
+  .hero h1{
+    font-size:clamp(38px,5.4vw,66px);line-height:1.03;font-weight:800;
+    margin:0 0 26px;color:var(--graphite);max-width:800px;
+  }
+  .hero p.lead{font-size:19px;line-height:1.65;color:var(--muted);max-width:600px;margin:0;}
+
+  /* units */
+  .units{padding:100px 0;background:var(--smoke);}
+  .sec-head{max-width:620px;margin-bottom:52px;}
+  .sec-head h2{font-size:clamp(28px,3.4vw,40px);margin:0 0 14px;color:var(--graphite);}
+  .sec-head p{font-size:16.5px;color:var(--muted);line-height:1.65;margin:0;}
+  .unit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  @media (max-width:920px){.unit-grid{grid-template-columns:1fr;}}
+  .unit{
+    background:var(--white);border:1px solid var(--line);border-radius:10px;
+    padding:38px 32px;text-decoration:none;display:flex;flex-direction:column;
+    position:relative;overflow:hidden;
+    transition:transform .18s, box-shadow .18s;
+  }
+  .unit::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:4px;
+    background:var(--accent);
+  }
+  .unit:hover{transform:translateY(-4px);box-shadow:0 20px 46px rgba(28,27,26,0.10);}
+  .unit .dom{
+    font-family:'Archivo',sans-serif;font-weight:600;font-size:12px;
+    letter-spacing:0.06em;color:var(--accent);margin-bottom:18px;
+  }
+  .unit h3{font-size:23px;margin:0 0 12px;color:var(--graphite);}
+  .unit p{font-size:14.5px;color:var(--muted);line-height:1.7;margin:0 0 26px;flex:1;}
+  .unit .go{
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:14px;
+    color:var(--graphite);display:flex;align-items:center;gap:8px;
+  }
+  .unit .go::after{content:"→";transition:transform .18s;color:var(--accent);}
+  .unit:hover .go::after{transform:translateX(4px);}
+  .u-msp{--accent:var(--msp);}
+  .u-infra{--accent:var(--infra);}
+  .u-intel{--accent:var(--intel);}
+
+  /* about band */
+  .about{background:var(--graphite);color:#e9e7e4;padding:104px 0;}
+  .about .wrap{display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:start;}
+  @media (max-width:860px){.about .wrap{grid-template-columns:1fr;gap:36px;}}
+  .about h2{font-size:clamp(28px,3.4vw,40px);color:#fff;margin:0;line-height:1.15;}
+  .about h2 em{font-style:normal;color:var(--red);}
+  .about p{font-size:16px;line-height:1.75;color:#b5b1ac;margin:0 0 18px;}
+  .about p:last-child{margin-bottom:0;}
+
+  /* contact */
+  .contact{padding:100px 0;}
+  .contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  @media (max-width:820px){.contact .wrap{grid-template-columns:1fr;}}
+  .contact h2{font-size:clamp(28px,3.4vw,40px);color:var(--graphite);margin:0 0 14px;}
+  .contact p{font-size:16px;color:var(--muted);line-height:1.65;margin:0;}
+  .c-box{border:1px solid var(--line);border-radius:10px;padding:36px;}
+  .c-box .lbl{font-family:'Archivo',sans-serif;font-weight:600;font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--red);margin-bottom:18px;}
+  .c-box a{display:block;font-size:17px;color:var(--graphite);text-decoration:none;padding:13px 0;border-bottom:1px solid var(--line);font-weight:500;transition:color .15s;}
+  .c-box a:hover{color:var(--red);}
+  .c-box a:last-child{border-bottom:none;}
+
+  footer{background:var(--graphite);color:#8f8b86;padding:46px 0;}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;font-size:13.5px;}
+  footer .fl{display:flex;align-items:center;gap:14px;}
+  footer .fl img{width:110px;height:auto;opacity:0.92;}
+  footer .flinks{display:flex;gap:26px;}
+  footer .flinks a{color:#8f8b86;text-decoration:none;}
+  footer .flinks a:hover{color:#fff;}
+</style>
+</head>
+<body>
+
+  <header>
+    <nav class="wrap">
+      <div class="logo"><img src="assets/c7-shield.png" alt="Cyber7 Group shield">CYBER<em>7</em>GROUP</div>
+      <div class="navlinks">
+        <a href="#companies">Our Companies</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <img class="shieldbg" src="assets/c7-shield.png" alt="" aria-hidden="true">
+    <div class="wrap">
+      <span class="kick">Technology Holding Company</span>
+      <h1>One group.<br>Three ways we move technology forward.</h1>
+      <p class="lead">Cyber7 Group is the parent of three specialized technology companies — covering managed IT, enterprise infrastructure, and applied AI — built on three decades of hands-on engineering.</p>
+    </div>
+  </section>
+
+  <section class="units" id="companies">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Our companies.</h2>
+        <p>Each business unit runs deep in its own discipline. Together, they cover the full arc of enterprise technology — from the desktop to the data center to what comes next.</p>
+      </div>
+      <div class="unit-grid">
+        <a class="unit u-msp" href="https://c7msp.com" target="_blank" rel="noopener">
+          <span class="dom">C7MSP.COM</span>
+          <h3>C7 MSP</h3>
+          <p>Flat-fee managed IT and cybersecurity for growing businesses — support, cloud, security, and backup under one predictable monthly price.</p>
+          <span class="go">Visit C7 MSP</span>
+        </a>
+        <a class="unit u-infra" href="https://c7infrastructure.io" target="_blank" rel="noopener">
+          <span class="dom">C7INFRASTRUCTURE.IO</span>
+          <h3>C7 Infrastructure</h3>
+          <p>Enterprise data center design and systems integration — network fabric, compute, storage, and facilities engineered as one system.</p>
+          <span class="go">Visit C7 Infrastructure</span>
+        </a>
+        <a class="unit u-intel" href="https://c7intelligence.io" target="_blank" rel="noopener">
+          <span class="dom">C7INTELLIGENCE.IO</span>
+          <h3>C7 Intelligence</h3>
+          <p>AI integration and custom software development — retrieval systems, automation, and applications that make it to production.</p>
+          <span class="go">Visit C7 Intelligence</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap">
+      <h2>Built by engineers.<br>Run like <em>it matters.</em></h2>
+      <div>
+        <p>Cyber7 Group exists because enterprise technology has grown too broad for one company to do everything well. So we don't pretend to — we built three focused companies instead, each with its own discipline, brand, and depth.</p>
+        <p>What they share is the Cyber7 standard: senior engineering on every engagement, vendor-agnostic designs, documentation as a deliverable, and solutions judged by how they run on day two — not how they demo on day one.</p>
+        <p>Whether you need your IT handled, your data center built, or your first AI system shipped — there's a C7 company built for exactly that.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div>
+        <h2>Not sure which company you need?</h2>
+        <p>Start here. We'll listen to what you're trying to do and route you to the right team — or tell you honestly if we're not the right fit.</p>
+      </div>
+      <div class="c-box">
+        <div class="lbl">Cyber7 Group</div>
+        <a href="tel:5024735020">502-473-5020</a>
+        <a href="mailto:info@cyber7group.com">info@cyber7group.com</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="fl">
+        <img src="assets/c7group-logo-light.png" alt="Cyber7 Group">
+      </div>
+      <div class="flinks">
+        <a href="https://c7msp.com" target="_blank" rel="noopener">C7 MSP</a>
+        <a href="https://c7infrastructure.io" target="_blank" rel="noopener">C7 Infrastructure</a>
+        <a href="https://c7intelligence.io" target="_blank" rel="noopener">C7 Intelligence</a>
+      </div>
+      <div>© 2026 Cyber7 Group LLC. All rights reserved.</div>
+    </div>
+  </footer>
+
+</body>
+</html>
